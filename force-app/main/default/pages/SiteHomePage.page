@@ -1,0 +1,16 @@
+<apex:page showHeader="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <div id="compContainer" />
+    <script>
+    $Lightning.use("c:publicHolidaysApp", function() {
+        
+        $Lightning.createComponent(
+            "c:publicHolidays",null,
+            "compContainer",
+            function(cmp) {
+                console.log("c:VFPageApp loaded successfully in VF page");
+            }
+        );
+    });
+    </script>
+</apex:page>

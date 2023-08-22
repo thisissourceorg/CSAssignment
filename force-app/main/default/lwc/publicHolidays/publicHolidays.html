@@ -1,0 +1,25 @@
+<template>
+<lightning-card class="slds-align_absolute-center ">
+    <p class="slds-text-heading_large slds-var-p-horizontal_large slds-var-p-vertical_large">Public Holidays on your birth Year
+    </p>
+    <div class="slds-var-p-horizontal_large">
+        <lightning-input name="enter-search" label="Please enter your 13 Digit National Id (Without Spaces)" type="Search"
+            onchange={handleKeyUp} max-length="13"></lightning-input>
+    </div>
+    <lightning-button class="slds-align_absolute-center slds-var-p-horizontal_large slds-var-p-vertical_large" label="Search" disabled={isDisabled} variant="brand" onclick={handleClick}></lightning-button>
+</lightning-card>
+
+<p if:true={isValid} class="slds-text-heading_medium">
+    Public Holidays for {searchedId}!
+</p>
+
+    <template if:true={pHolidays} for:each={pHolidays} for:item=pHoliday>
+    <lightning-card class="slds-var-m-around_large" key = {pHoliday.cDate}>
+        <h3 slot="title">
+            {pHoliday.primaryType} on {pHoliday.cDate}
+
+        </h3>
+        <p class="slds-var-p-horizontal_large">{pHoliday.description}</p>
+    </lightning-card>
+</template>
+</template>
